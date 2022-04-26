@@ -1,0 +1,28 @@
+<h1>Student List</h1>
+<button (click)="changeStatus()" type="button" class="btn btn-primary">Show create form</button>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Age</th>
+    <th scope="col">Country</th>
+    <th scope="col">Edit</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let student of students; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td>{{student.name}}</td>
+    <td>{{student.age}}</td>
+    <td>{{student.country}}</td>
+    <td><button (click)="changeStatusForEditForm(student)">Edit</button></td>
+    <td><button (click)="changeStatusDeleteForm(student)">Delete</button></td>
+  </tr>
+  </tbody>
+</table>
+
+<app-student-edit *ngIf="isShowEditedForm" [student]="currentStudent" (eventEmitter)="editStudent($event)"></app-student-edit>
+<app-create-student *ngIf="isShowCreateForm" (createEvent)="addStudent($event)"></app-create-student>
+<app-student-delete *ngIf="isShowDeleteInfo" [student]="currentStudent" (deleteEvent)="deleteStudent($event)"></app-student-delete>

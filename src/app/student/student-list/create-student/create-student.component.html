@@ -1,0 +1,25 @@
+<form (ngSubmit)="createStudent()">
+  <div class="mb-3">
+    <label for="id" class="form-label">Id</label>
+    <input type="number" class="form-control" id="id" aria-describedby="emailHelp" name="id" [(ngModel)]="student.id">
+  </div>
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="student.name">
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Age</label>
+    <input type="text" class="form-control" id="age" name="age" [(ngModel)]="student.age">
+  </div>
+  <div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <input type="text" class="form-control" id="country" name="country" [(ngModel)]="student.country">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<p>{{student.id}}</p>
+<p>{{student.name}}</p>
+<p>{{student.age}}</p>
+<p>{{student.country}}</p>
+
