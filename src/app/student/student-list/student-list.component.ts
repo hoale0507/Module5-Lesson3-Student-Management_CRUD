@@ -57,7 +57,7 @@ export class StudentListComponent implements OnInit {
   editStudent(student) {
     let index = -1;
     for (let i = 0; i < this.students.length; i++) {
-      if (student.id === student[i].id) {
+      if (student.id === this.students[i].id) {
         index = i;
         break;
       }

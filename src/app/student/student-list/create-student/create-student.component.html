@@ -1,11 +1,18 @@
-<form (ngSubmit)="createStudent()">
+<form (ngSubmit)="createStudent(studentForm)" #studentForm="ngForm">
   <div class="mb-3">
     <label for="id" class="form-label">Id</label>
-    <input type="number" class="form-control" id="id" aria-describedby="emailHelp" name="id" [(ngModel)]="student.id">
+    <input type="number" class="form-control" id="id" aria-describedby="emailHelp" name="id" #id='ngModel' required [(ngModel)]="student.id">
+    <p [hidden]="id.valid || !id.touched" style="color: red">ID is required</p>
+<!--    <p [hidden]="id.valid || id.pristine">ID is required</p>-->
   </div>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="student.name">
+    <input type="text" class="form-control" id="name" name="name" required minlength="6" maxlength="15" #name='ngModel' [(ngModel)]="student.name">
+    <div [hidden]="name.valid || name.pristine">
+      <p *ngIf="name.errors?.required" style="color: red;">Name is required</p>
+      <p *ngIf="name.errors?.minlength" style="color: red">Min length is 6</p>
+      <p *ngIf="name.errors?.maxlength" style="color: red">Max length is 15</p>
+    </div>
   </div>
   <div class="mb-3">
     <label for="age" class="form-label">Age</label>
@@ -17,9 +24,3 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-<p>{{student.id}}</p>
-<p>{{student.name}}</p>
-<p>{{student.age}}</p>
-<p>{{student.country}}</p>
-

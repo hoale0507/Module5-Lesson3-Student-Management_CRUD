@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { CreateStudentComponent } from './student/student-list/create-student/create-student.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StudentEditComponent } from './student/student-list/student-edit/student-edit.component';
 import { StudentDeleteComponent } from './student/student-list/student-delete/student-delete.component';
 
@@ -20,7 +20,8 @@ import { StudentDeleteComponent } from './student/student-list/student-delete/st
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

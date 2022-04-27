@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let student of students; let i = index">
-    <th scope="row">{{i+1}}</th>
+    <th scope="row">{{student.id}}</th>
     <td>{{student.name}}</td>
     <td>{{student.age}}</td>
     <td>{{student.country}}</td>
@@ -24,5 +24,6 @@
 </table>
 
 <app-student-edit *ngIf="isShowEditedForm" [student]="currentStudent" (eventEmitter)="editStudent($event)"></app-student-edit>
+<!--<app-student-edit *ngIf="isShowEditedForm"(eventEmitter)="editStudent($event)"></app-student-edit>-->
 <app-create-student *ngIf="isShowCreateForm" (createEvent)="addStudent($event)"></app-create-student>
 <app-student-delete *ngIf="isShowDeleteInfo" [student]="currentStudent" (deleteEvent)="deleteStudent($event)"></app-student-delete>

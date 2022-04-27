@@ -15,7 +15,11 @@ export class CreateStudentComponent implements OnInit {
   ngOnInit() {
   }
 
-  createStudent() {
-    this.createEvent.emit(this.student);
+  createStudent(studentForm) {
+    if(studentForm.valid){
+    this.createEvent.emit(studentForm.value);
+    } else {
+      console.log("Error");
+    }
   }
 }

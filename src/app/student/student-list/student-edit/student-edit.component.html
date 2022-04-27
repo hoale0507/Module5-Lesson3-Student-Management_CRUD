@@ -1,19 +1,25 @@
-<form (ngSubmit)="submit()">
+<form [formGroup]="studentForm" (ngSubmit)="submit()">
   <div class="mb-3">
     <label for="id" class="form-label">Edit Id</label>
-    <input type="number" class="form-control" id="id" aria-describedby="emailHelp" name="id" [(ngModel)]="student.id">
+    <input type="number" class="form-control" id="id" aria-describedby="emailHelp" formControlName="id" disabled>
+    <p [hidden]="idControl.valid || idControl.pristine" style="color: red">ID is required</p>
   </div>
   <div class="mb-3">
     <label for="name" class="form-label">Edit Name</label>
-    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="student.name">
+    <input type="text" class="form-control" id="name" formControlName="name">
+    <div [hidden]="nameControl.valid || nameControl.pristine">
+      <p *ngIf="nameControl.errors?.required" style="color: red">Name is required</p>
+      <p *ngIf="nameControl.errors?.minlength" style="color: red">Min length is 6</p>
+      <p *ngIf="nameControl.errors?.maxlength" style="color: red">Max length is 15</p>
+    </div>
   </div>
   <div class="mb-3">
     <label for="age" class="form-label">Edit Age</label>
-    <input type="text" class="form-control" id="age" name="age" [(ngModel)]="student.age">
+    <input type="text" class="form-control" id="age" formControlName="age">
   </div>
   <div class="mb-3">
     <label for="country" class="form-label">Edit Country</label>
-    <input type="text" class="form-control" id="country" name="country" [(ngModel)]="student.country">
+    <input type="text" class="form-control" id="country" formControlName="country">
   </div>
   <button type="submit" class="btn btn-primary">Edit</button>
 </form>
